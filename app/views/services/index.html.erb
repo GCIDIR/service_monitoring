@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+
+<div class="panel panel-default col col-md-8">
+  <div class="panel-heading">List of all services</div>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Ip</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @services.each do |service| %>
+        <tr>
+          <td><%=service.name%></td>
+          <td><%=service.ip%></td>
+          <td><%=service.host%></td>
+          <td><span><%=service.state%></span></td>
+          <td>
+            <%= link_to 'Show', service, class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_service_path(service), class: 'btn btn-primary' %>
+            <%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <%= link_to 'History', service_pings_path(service), class: 'btn btn-default'%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+
+<div class='col col-md-12'>
+  <%= link_to 'New Service', new_service_path, class: 'btn btn-default' %>
+</div>

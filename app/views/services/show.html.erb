@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Show Service</h1>
+<% [:name, :ip, :host, :state].each do |attribute| %>
+	<div class='col col-md-8'>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		    <strong><%=I18n.t(:"activerecord.attributes.service.#{attribute}")%>:</strong>
+		  </div>
+		  <div class="panel-footer"><%= @service.send(attribute)%></div>
+		</div>
+	</div>
+
+<% end %>
+
+<div class='col col-md-12'>
+	<%= link_to 'Edit', edit_service_path(@service), class: 'btn btn-primary' %> |
+	<%= link_to 'Back', services_path, class: 'btn btn-default'%>
+	<%= link_to 'History', service_pings_path(@service), class: 'btn btn-default'%>
+</div>
+

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>History</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">History of Service <%=@service.name%></div>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Datetime</th>
+        <th>Available</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @ping_history.each do |p| %>
+        <tr>
+          <td><%=p.created_at%></td>
+          <td>
+          	<% cls = p.service_up ? 'success' : 'danger'%>
+          	<span class="label label-<%=cls%>"><%=p.service_up%></span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%=paginate(@ping_history)%>
+<br>
+<%= link_to 'Back', service_path(@service), class: 'btn btn-default' %>
